@@ -14,6 +14,7 @@
     <gap:plugin name="cordova-plugin-whitelist" source="npm"/>
     <gap:plugin name="cordova-plugin-splashscreen" source="npm"/>
     <gap:plugin name="cordova-plugin-inappbrowser" source="npm"/>
+    <gap:plugin name="cordova-plugin-statusbar" source="npm"/>
     <allow-navigation href="http://api.offgard.com/*"/>
     <allow-intent href="http://api.offgard.com/*"/>
     <access origin="http://api.offgard.com"/>
@@ -28,5 +29,7 @@
     <preference name="SplashScreen" value="splash"/>
     <preference name="SplashScreenDelay" value="5000"/>
     <preference name="SplashMaintainAspectRatio" value="true"/>
+    <preference name="StatusBarOverlaysWebView" value="true"/>
+    <preference name="StatusBarBackgroundColor" value="#F44336"/>
     <splash src="res/screen/screen.png"/>
 </widget>

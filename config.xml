@@ -28,7 +28,7 @@
     <preference name="StatusBarOverlaysWebView" value="false"/>
     <preference name="StatusBarBackgroundColor" value="#F44336"/>
     <preference name="SplashScreen" value="splash"/>
-    <preference name="SplashScreenDelay" value="3000"/>
+    <preference name="SplashScreenDelay" value="5000"/>
     <preference name="SplashMaintainAspectRatio" value="true"/>
     <splash src="res/screen/screen.png"/>
 </widget>

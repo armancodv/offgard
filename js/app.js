@@ -615,7 +615,7 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
     
     $scope.open_link = function (link) {
         window.open(link, '_system');
-    }
+    };
 
     /////////////////////// date
     $scope.date_from = new Date();

@@ -64,7 +64,7 @@
                 <table class="off-share">
                     <tr>
                         <td>
-                            <a href="https://telegram.me/share/url?url={{'http://offgard.com/#/off/'+item.id | escape}}&text={{item.name+' | '+item.description | escape}}"
+                            <a ng-click="open_link('https://telegram.me/share/url?url={{'http://offgard.com/#/off/'+item.id | escape}}&text={{item.name+' | '+item.description | escape}}')"
                                class="no-decoration">
                                 <div class="off-share-button">
                                     <i class="fa fa-telegram fa-2x"></i>
@@ -72,7 +72,7 @@
                             </a>
                         </td>
                         <td>
-                            <a href="https://www.facebook.com/sharer/sharer.php?u={{'http://offgard.com/#/off/'+item.id | escape}}&t={{item.name+' | '+item.description | escape}}"
+                            <a ng-click="open_link('https://www.facebook.com/sharer/sharer.php?u={{'http://offgard.com/#/off/'+item.id | escape}}&t={{item.name+' | '+item.description | escape}}')"
                                class="no-decoration">
                                 <div class="off-share-button">
                                     <i class="fa fa-facebook fa-2x"></i>
@@ -80,7 +80,7 @@
                             </a>
                         </td>
                         <td>
-                            <a href="http://twitter.com/share?url={{'http://offgard.com/#/off/'+item.id | escape}}&text={{item.name+' | '+item.description | escape}}"
+                            <a ng-click="open_link('http://twitter.com/share?url={{'http://offgard.com/#/off/'+item.id | escape}}&text={{item.name+' | '+item.description | escape}}')"
                                class="no-decoration">
                                 <div class="off-share-button">
                                     <i class="fa fa-twitter fa-2x"></i>
@@ -88,7 +88,7 @@
                             </a>
                         </td>
                         <td>
-                            <a href="https://plus.google.com/share?url={{'http://offgard.com/#/off/'+item.id | escape}}"
+                            <a ng-click="open_link('https://plus.google.com/share?url={{'http://offgard.com/#/off/'+item.id | escape}}')"
                                class="no-decoration">
                                 <div class="off-share-button">
                                     <i class="fa fa-google-plus fa-2x"></i>

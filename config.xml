@@ -25,10 +25,10 @@
     <icon src="res/icon/icon-96-xhdpi.png" gap:platform="android" gap:qualifier="xhdpi"/>
     <icon src="res/icon/icon-144-xxhdpi.png" gap:platform="android" gap:qualifier="xxhdpi"/>
     <icon src="res/icon/icon-192-xxxhdpi.png" gap:platform="android" gap:qualifier="xxxhdpi"/>
+    <preference name="StatusBarOverlaysWebView" value="false"/>
+    <preference name="StatusBarBackgroundColor" value="#F44336"/>
     <preference name="SplashScreen" value="splash"/>
     <preference name="SplashScreenDelay" value="5000"/>
     <preference name="SplashMaintainAspectRatio" value="true"/>
     <splash src="res/screen/screen.png"/>
-    <preference name="StatusBarOverlaysWebView" value="false"/>
-    <preference name="StatusBarBackgroundColor" value="#F44336"/>
 </widget>

@@ -14,6 +14,7 @@
     <gap:plugin name="cordova-plugin-whitelist" source="npm"/>
     <gap:plugin name="cordova-plugin-splashscreen" source="npm"/>
     <gap:plugin name="cordova-plugin-statusbar" source="npm"/>
+    <gap:plugin name="cordova-plugin-inappbrowser" source="npm" />
     <allow-navigation href="http://api.offgard.com/*"/>
     <allow-intent href="http://api.offgard.com/*"/>
     <access origin="http://api.offgard.com"/>

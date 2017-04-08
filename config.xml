@@ -14,19 +14,19 @@
     <gap:plugin name="cordova-plugin-whitelist" source="npm"/>
     <gap:plugin name="cordova-plugin-splashscreen" source="npm"/>
     <gap:plugin name="cordova-plugin-inappbrowser" source="npm"/>
-    <allow-navigation href="http://offgard.com/*"/>
-    <allow-intent href="http://offgard.com/*"/>
-    <access origin="http://offgard.com"/>
+    <allow-navigation href="http://api.offgard.com/*"/>
+    <allow-intent href="http://api.offgard.com/*"/>
+    <access origin="http://api.offgard.com"/>
     <access origin="*"/>
     <icon src="res/icon/icon.png"/>
-    <icon src="res/icon/android/icon-36-ldpi.png" gap:platform="android" gap:qualifier="ldpi"/>
-    <icon src="res/icon/android/icon-48-mdpi.png" gap:platform="android" gap:qualifier="mdpi"/>
-    <icon src="res/icon/android/icon-72-hdpi.png" gap:platform="android" gap:qualifier="hdpi"/>
-    <icon src="res/icon/android/icon-96-xhdpi.png" gap:platform="android" gap:qualifier="xhdpi"/>
-    <icon src="res/icon/android/icon-144-xxhdpi.png" gap:platform="android" gap:qualifier="xxhdpi"/>
-    <icon src="res/icon/android/icon-192-xxxhdpi.png" gap:platform="android" gap:qualifier="xxxhdpi"/>
+    <icon src="res/icon/icon-36-ldpi.png" gap:platform="android" gap:qualifier="ldpi"/>
+    <icon src="res/icon/icon-48-mdpi.png" gap:platform="android" gap:qualifier="mdpi"/>
+    <icon src="res/icon/icon-72-hdpi.png" gap:platform="android" gap:qualifier="hdpi"/>
+    <icon src="res/icon/icon-96-xhdpi.png" gap:platform="android" gap:qualifier="xhdpi"/>
+    <icon src="res/icon/icon-144-xxhdpi.png" gap:platform="android" gap:qualifier="xxhdpi"/>
+    <icon src="res/icon/icon-192-xxxhdpi.png" gap:platform="android" gap:qualifier="xxxhdpi"/>
     <preference name="SplashScreen" value="splash"/>
-    <preference name="SplashScreenDelay" value="3000"/>
+    <preference name="SplashScreenDelay" value="5000"/>
     <preference name="SplashMaintainAspectRatio" value="true"/>
-    <splash src="res/screen/android/screen.png"/>
+    <splash src="res/screen/screen.png"/>
 </widget>

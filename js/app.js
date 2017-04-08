@@ -8,7 +8,7 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
     });
 
     /////////////////////// routes
-    const SERVER = 'http://localhost/offgard-server/';
+    const SERVER = 'http://api.offgard.com/';
     $scope.url = function (get) {
         return SERVER + '?' + serializeData(get);
     };

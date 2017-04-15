@@ -14,7 +14,8 @@
     <gap:plugin name="cordova-plugin-whitelist" source="npm"/>
     <gap:plugin name="cordova-plugin-splashscreen" source="npm"/>
     <gap:plugin name="cordova-plugin-statusbar" source="npm"/>
-    <gap:plugin name="cordova-plugin-inappbrowser" source="npm" />
+    <gap:plugin name="cordova-plugin-inappbrowser" source="npm"/>
+    <gap:plugin name="cordova-plugin-x-socialsharing" source="npm"/>
     <allow-navigation href="http://api.offgard.com/*"/>
     <allow-intent href="http://api.offgard.com/*"/>
     <access origin="http://api.offgard.com"/>
@@ -27,9 +28,12 @@
     <icon src="res/icon/icon-144-xxhdpi.png" gap:platform="android" gap:qualifier="xxhdpi"/>
     <icon src="res/icon/icon-192-xxxhdpi.png" gap:platform="android" gap:qualifier="xxxhdpi"/>
     <preference name="StatusBarOverlaysWebView" value="true"/>
-    <preference name="StatusBarBackgroundColor" value="#F44336"/>
+    <preference name="StatusBarBackgroundColor" value="#e43f32"/>
     <preference name="SplashScreen" value="splash"/>
     <preference name="SplashScreenDelay" value="5000"/>
     <preference name="SplashMaintainAspectRatio" value="true"/>
+    <feature name="SocialSharing">
+        <param name="android-package" value="nl.xservices.plugins.SocialSharing"/>
+    </feature>
     <splash src="res/screen/screen.png"/>
 </widget>

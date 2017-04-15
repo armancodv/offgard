@@ -1,7 +1,7 @@
-<div ui-content-for="title">
+<div ui-content-for="title" ng-init="show_categories()">
     <span>دسته بندی</span>
-    <div class="pull-left" ng-if="categories.loading"><i class="fa fa-refresh fa-spin"></i></div>
-    <div class="pull-left" ng-click="show_categories()" ng-if="!categories.loading"><i class="fa fa-refresh"></i></div>
+    <div class="refresh" ng-if="categories.loading"><i class="fa fa-refresh fa-spin"></i></div>
+    <div class="refresh" ng-click="show_categories()" ng-if="!categories.loading"><i class="fa fa-refresh"></i></div>
 </div>
 
 <div class="scrollable" ui-shared-state="searchBar">

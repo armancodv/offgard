@@ -210,25 +210,31 @@ pre {
     text-align: center;
 }
 
+.off-share td .total {
+    width: 100%;
+    padding-top: 5px;
+    text-align: center;
+}
+
 .off-share a {
     color: #777;
 }
 
 .page-button {
     width: 100%;
-    background-color: #eee;
+    background-color: #e8e8e8;
     color: #F44336;
-    padding: 20px 0;
+    padding: 15px 0;
     text-align: center;
     font-size: 16px;
 }
 
 .margin-top {
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 .margin-bottom {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .no-decoration, .no-decoration:hover {
@@ -260,29 +266,36 @@ pre {
 }
 
 .a1 img {
-    margin: 3px auto;
-    max-width: 100%;
-    width: 234px;
+    margin: 1px auto;
+    width: 100%;
+    max-width: 300px;
 }
 
 .b1, .c1, .b2, .c2 {
+    background-color: #f0f0f0;
     width: 100%;
     text-align: center;
 }
 
 .b1 img, .c1 img {
-    margin: 3px 3px;
-    max-width: 100%;
-    width: 234px;
+    margin: 1px 1px;
+    width: 100%;
+    max-width: 468px;
 }
 
 .b2 img, .c2 img {
-    margin: 3px 3px;
-    max-width: 100%;
-    width: 300px;
+    margin: 1px 1px;
+    width: 100%;
+    max-width: 300px;
 }
 
 ol li {
     padding: 5px 0;
     line-height: 200%;
+}
+
+.refresh {
+    position: absolute;
+    left: 15px;
+    top: 15px
 }

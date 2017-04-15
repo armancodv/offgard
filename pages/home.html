@@ -1,14 +1,14 @@
 <div ui-content-for="title" ng-init="show_offs()">
     <span>آفگرد</span>
-    <div class="pull-left" ng-if="offs.loading"><i class="fa fa-refresh fa-spin"></i></div>
-    <div class="pull-left" ng-click="show_offs()" ng-if="!offs.loading"><i class="fa fa-refresh"></i></div>
+    <div class="refresh" ng-if="offs.loading"><i class="fa fa-refresh fa-spin"></i></div>
+    <div class="refresh" ng-click="show_offs()" ng-if="!offs.loading"><i class="fa fa-refresh"></i></div>
 </div>
 <div class="scrollable">
     <div class="scrollable-content">
         <div class="col-sm-12 page-button margin-bottom" ng-if="offs.page.show_previous_page"
              ng-click="previous_page()"><i class="fa fa-arrow-up"></i> صفحه قبل
         </div>
-        <div class="col-sm-12 b1">
+        <div class="b1">
             <img ng-repeat="item in advertisements.result.b1" src="{{item.path}}" ng-click="open_link(item.link)">
         </div>
         <div class="col-sm-6 col-lg-4" ng-repeat="item in offs.result">
@@ -61,10 +61,10 @@
                         </td>
                     </tr>
                 </table>
-                <table class="off-share">
+                <table class="off-share" ng-if="is_web_app">
                     <tr>
                         <td>
-                            <a ng-click="open_link('https://telegram.me/share/url?url={{'http://offgard.com/#/off/'+item.id | escape}}&text={{item.name+' | '+item.description | escape}}')"
+                            <a ng-click="open_link(share_telegram('#/off/'+item.id,item.name+' | '+item.description))"
                                class="no-decoration">
                                 <div class="off-share-button">
                                     <i class="fa fa-telegram fa-2x"></i>
@@ -72,7 +72,7 @@
                             </a>
                         </td>
                         <td>
-                            <a ng-click="open_link('https://www.facebook.com/sharer/sharer.php?u={{'http://offgard.com/#/off/'+item.id | escape}}&t={{item.name+' | '+item.description | escape}}')"
+                            <a ng-click="open_link(share_facebook('#/off/'+item.id,item.name+' | '+item.description))"
                                class="no-decoration">
                                 <div class="off-share-button">
                                     <i class="fa fa-facebook fa-2x"></i>
@@ -80,7 +80,7 @@
                             </a>
                         </td>
                         <td>
-                            <a ng-click="open_link('http://twitter.com/share?url={{'http://offgard.com/#/off/'+item.id | escape}}&text={{item.name+' | '+item.description | escape}}')"
+                            <a ng-click="open_link(share_twitter('#/off/'+item.id,item.name+' | '+item.description))"
                                class="no-decoration">
                                 <div class="off-share-button">
                                     <i class="fa fa-twitter fa-2x"></i>
@@ -88,10 +88,23 @@
                             </a>
                         </td>
                         <td>
-                            <a ng-click="open_link('https://plus.google.com/share?url={{'http://offgard.com/#/off/'+item.id | escape}}')"
+                            <a ng-click="open_link(share_google('#/off/'+item.id,item.name+' | '+item.description))"
                                class="no-decoration">
                                 <div class="off-share-button">
                                     <i class="fa fa-google-plus fa-2x"></i>
+                                </div>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+                <table class="off-share" ng-if="!is_web_app">
+                    <tr>
+                        <td class="total">
+                            <a ng-click="share(item.description, item.name, item.image, '#/off/'+item.id)"
+                               class="no-decoration">
+                                <div class="off-share-button">
+                                    <i class="fa fa-share-alt fa-2x"></i>
+                                    <span>اشتراک گذاری</span>
                                 </div>
                             </a>
                         </td>
@@ -124,18 +137,6 @@
     "description": "{{item.off_text}}"
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
             </script>
         </div>
         <div class="col-sm-6 col-lg-4" ng-if="!offs.page.show_next_page">
@@ -155,7 +156,7 @@
                 </div>
             </a>
         </div>
-        <div class="col-sm-12 b2">
+        <div class="b2">
             <img ng-repeat="item in advertisements.result.b2" src="{{item.path}}" ng-click="open_link(item.link)">
         </div>
         <div class="col-sm-12 page-button margin-top" ng-if="offs.page.show_next_page" ng-click="next_page()"><i

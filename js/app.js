@@ -8,20 +8,38 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
     });
 
     /////////////////////// routes
-    const SERVER = 'http://api.offgard.com/';
+    const SERVER = 'http://offgard.com/api/';
+//    const SERVER = 'http://localhost/offgard-server/';
+    const WEBAPP = 'http://offgard.com/app/';
+    $scope.is_web_app = false;
     $scope.url = function (get) {
         return SERVER + '?' + serializeData(get);
     };
     $scope.show_captcha_url = function (captcha_id) {
         return SERVER + 'captcha.php?id=' + encodeURIComponent(captcha_id);
     };
-
+    $scope.share_telegram = function (url, text) {
+        return 'https://telegram.me/share/url?' + serializeData({url: WEBAPP + url, text: text});
+    };
+    $scope.share_facebook = function (url, text) {
+        return 'https://www.facebook.com/sharer/sharer.php?' + serializeData({u: WEBAPP + url, t: text});
+    };
+    $scope.share_twitter = function (url, text) {
+        return 'http://twitter.com/share?' + serializeData({url: WEBAPP + url, text: text});
+    };
+    $scope.share_google = function (url, text) {
+        return 'https://plus.google.com/share?' + serializeData({url: WEBAPP + url});
+    };
+    $scope.share = function (message, subject, image, link) {
+        window.plugins.socialsharing.share(message, subject, image, link);
+    };
     /////////////////////// local storage
     $scope.read_local_storage = function (varname) {
         try {
             $scope[varname] = JSON.parse(localStorage.getItem(varname));
         } catch (e) {
-            $scope[varname] = localStorage.getItem(varname);
+            if (localStorage.getItem(varname)) $scope[varname] = localStorage.getItem(varname);
+            else $scope[varname] = {};
         }
     };
     $scope.write_local_storage = function (varname) {
@@ -29,6 +47,10 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
     };
     $scope.delete_local_storage = function (varname) {
         localStorage.setItem(varname, undefined);
+    };
+    $scope.set_loading = function (varname) {
+        if (!$scope[varname]) $scope[varname] = {};
+        $scope[varname].loading = true;
     };
 
     /////////////////////// captcha
@@ -38,7 +60,7 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
             p: 'captcha',
             m: 'get'
         };
-        $scope[varname] = {loading: true};
+        $scope.set_loading(varname);
         $http.get($scope.url(get))
             .then(function (response) {
                 $scope[varname] = response.data;
@@ -66,7 +88,7 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
             captcha_id: captcha_id,
             captcha_code: captcha_code
         };
-        $scope[varname] = {loading: true};
+        $scope.set_loading(varname);
         $http({
             url: $scope.url(get),
             method: 'POST',
@@ -100,7 +122,7 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
             firstname: firstname,
             lastname: lastname
         };
-        $scope[varname] = {loading: true};
+        $scope.set_loading(varname);
         $http({
             url: $scope.url(get),
             method: 'POST',
@@ -125,7 +147,7 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
             captcha_id: captcha_id,
             captcha_code: captcha_code
         };
-        $scope[varname] = {loading: true};
+        $scope.set_loading(varname);
         $http({
             url: $scope.url(get),
             method: 'POST',
@@ -157,7 +179,7 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
             captcha_id: captcha_id,
             captcha_code: captcha_code
         };
-        $scope[varname] = {loading: true};
+        $scope.set_loading(varname);
         $http({
             url: $scope.url(get),
             method: 'POST',
@@ -179,7 +201,7 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
             username: username,
             token: token
         };
-        $scope[varname] = {loading: true};
+        $scope.set_loading(varname);
         $http.get($scope.url(get))
             .then(function (response) {
                 $scope[varname] = response.data;
@@ -212,7 +234,7 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
             city: $scope.city_selected.code,
             keyword: keyword
         };
-        $scope[varname] = {loading: true};
+        $scope.set_loading(varname);
         $http({
             url: $scope.url(get),
             method: 'POST',
@@ -236,7 +258,7 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
         var post = {
             id: id || $routeParams.off_id
         };
-        $scope[varname] = {loading: true};
+        $scope.set_loading(varname);
         $http({
             url: $scope.url(get),
             method: 'POST',
@@ -265,7 +287,7 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
             token: token
         };
         var post = {};
-        $scope[varname] = {loading: true};
+        $scope.set_loading(varname);
         $http({
             url: $scope.url(get),
             method: 'POST',
@@ -301,7 +323,7 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
             off_min: off_min,
             off_max: off_max
         };
-        $scope[varname] = {loading: true};
+        $scope.set_loading(varname);
         $http({
             url: $scope.url(get),
             method: 'POST',
@@ -340,7 +362,7 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
             off_min: off_min,
             off_max: off_max
         };
-        $scope[varname] = {loading: true};
+        $scope.set_loading(varname);
         $http({
             url: $scope.url(get),
             method: 'POST',
@@ -367,7 +389,7 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
         var post = {
             id: id
         };
-        $scope[varname] = {loading: true};
+        $scope.set_loading(varname);
         $http({
             url: $scope.url(get),
             method: 'POST',
@@ -413,7 +435,7 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
     };
     /////
     $scope.change_keyword = function (keyword) {
-        window.location.replace('#/search/'+keyword);
+        window.location.replace('#/search/' + keyword);
     };
 
     /////////////////////// comment
@@ -426,7 +448,7 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
         var post = {
             off_id: off_id
         };
-        $scope[varname] = {loading: true};
+        $scope.set_loading(varname);
         $http({
             url: $scope.url(get),
             method: 'POST',
@@ -453,7 +475,7 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
             off_id: off_id,
             rate: rate
         };
-        $scope[varname] = {loading: true};
+        $scope.set_loading(varname);
         $http({
             url: $scope.url(get),
             method: 'POST',
@@ -478,7 +500,7 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
         var post = {
             id: id
         };
-        $scope[varname] = {loading: true};
+        $scope.set_loading(varname);
         $http({
             url: $scope.url(get),
             method: 'POST',
@@ -504,7 +526,7 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
         };
         var fd = new FormData();
         fd.append('image', image);
-        $scope[varname] = {loading: true};
+        $scope.set_loading(varname);
         $http({
             url: $scope.url(get),
             method: 'POST',
@@ -530,7 +552,7 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
         var post = {
             off_id: id
         };
-        $scope[varname] = {loading: true};
+        $scope.set_loading(varname);
         $http({
             url: $scope.url(get),
             method: 'POST',
@@ -551,7 +573,7 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
             p: 'category',
             m: 'get'
         };
-        $scope[varname] = {loading: true};
+        $scope.set_loading(varname);
         $http.get($scope.url(get)).then(function (response) {
             $scope[varname] = response.data;
             if ($scope[varname].status) $scope.write_local_storage(varname);
@@ -574,7 +596,7 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
             p: 'city',
             m: 'get'
         };
-        $scope[varname] = {loading: true};
+        $scope.set_loading(varname);
         $http.get($scope.url(get)).then(function (response) {
             $scope[varname] = response.data;
             if ($scope[varname].status) $scope.write_local_storage(varname);
@@ -598,7 +620,7 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
             m: 'get'
         };
         var post = {};
-        $scope[varname] = {loading: true};
+        $scope.set_loading(varname);
         $http({
             url: $scope.url(get),
             method: 'POST',
@@ -611,8 +633,8 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
             $scope[varname].error = 'خطا در ارتباط';
         });
     };
-    
-    
+
+
     $scope.open_link = function (link) {
         window.open(link, '_system');
     };

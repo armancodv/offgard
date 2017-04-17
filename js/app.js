@@ -31,7 +31,7 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
         return 'https://plus.google.com/share?' + serializeData({url: WEBAPP + url});
     };
     $scope.share = function (message, subject, image, link) {
-        window.plugins.socialsharing.share(message, subject, image, link);
+        window.plugins.socialsharing.share(message, subject, image, WEBAPP + link);
     };
     /////////////////////// local storage
     $scope.read_local_storage = function (varname) {

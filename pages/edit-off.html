@@ -73,6 +73,7 @@
             </div>
         </form>
         <div ng-if="off.success">
+            <div class="alert alert-info" ng-if="image.loading"><i class="fa fa-circle-o-notch fa-spin"></i> در حال بارگذاری عکس.</div>
             <div class="alert alert-success" ng-if="off.success">{{off.success}}</div>
             <div class="alert alert-info"><i class="fa fa-info-circle"></i>با تشکر از شما. آگهی پس از بررسی در لیست تخفیفات نمایش داده خواهد شد.</div>
             <a class="btn btn-primary" href="#/my-offs" ng-click="delete_message()"><i class="fa fa-list-ul"></i> تخفیفات من</a>

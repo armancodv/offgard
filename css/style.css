@@ -103,6 +103,12 @@ pre {
     background-size: cover;
 }
 
+.off-abs .off-city {
+    position: absolute;
+    top: 260px;
+    right: 15px;
+}
+
 .off-abs .off-top {
     height: 300px;
 }

@@ -40,11 +40,13 @@
                             <div class="off-rate">
                                 <i class="fa fa-thumbs-down fa-lg" ng-if="login.status"
                                    ng-click="insert_comment(login.username, login.token, item.id, -1);"></i>
-                                <i class="fa fa-thumbs-down fa-lg disabled" ng-if="!login.status"></i>
+                                <i class="fa fa-thumbs-down fa-lg disabled" ng-if="!login.status"
+                                   ng-click="goto_page('login')"></i>
                                 &nbsp;{{item.rate.summation || 0}}&nbsp;
                                 <i class="fa fa-thumbs-up fa-lg" ng-if="login.status"
                                    ng-click="insert_comment(login.username, login.token, item.id, 1);"></i>
-                                <i class="fa fa-thumbs-up fa-lg disabled" ng-if="!login.status"></i>
+                                <i class="fa fa-thumbs-up fa-lg disabled" ng-if="!login.status"
+                                   ng-click="goto_page('login')"></i>
                             </div>
                         </td>
                     </tr>
@@ -68,7 +70,7 @@
                 <table class="off-share" ng-if="is_web_app">
                     <tr>
                         <td>
-                            <a ng-click="open_link(share_telegram('#/off/'+item.id,item.name+' | '+item.description))"
+                            <a ng-click="open_link(share_telegram('#/off/'+item.id,item.name+' | '+item.description+' #آفگرد '+' #'+item.city_name+' #'+item.category_name))"
                                class="no-decoration">
                                 <div class="off-share-button">
                                     <i class="fa fa-telegram fa-2x"></i>
@@ -76,7 +78,7 @@
                             </a>
                         </td>
                         <td>
-                            <a ng-click="open_link(share_facebook('#/off/'+item.id,item.name+' | '+item.description))"
+                            <a ng-click="open_link(share_facebook('#/off/'+item.id,item.name+' | '+item.description+' #آفگرد '+' #'+item.city_name+' #'+item.category_name))"
                                class="no-decoration">
                                 <div class="off-share-button">
                                     <i class="fa fa-facebook fa-2x"></i>
@@ -84,7 +86,7 @@
                             </a>
                         </td>
                         <td>
-                            <a ng-click="open_link(share_twitter('#/off/'+item.id,item.name+' | '+item.description))"
+                            <a ng-click="open_link(share_twitter('#/off/'+item.id,item.name+' | '+item.description+' #آفگرد '+' #'+item.city_name+' #'+item.category_name))"
                                class="no-decoration">
                                 <div class="off-share-button">
                                     <i class="fa fa-twitter fa-2x"></i>
@@ -92,7 +94,7 @@
                             </a>
                         </td>
                         <td>
-                            <a ng-click="open_link(share_google('#/off/'+item.id,item.name+' | '+item.description))"
+                            <a ng-click="open_link(share_google('#/off/'+item.id,item.name+' | '+item.description+' #آفگرد '+' #'+item.city_name+' #'+item.category_name))"
                                class="no-decoration">
                                 <div class="off-share-button">
                                     <i class="fa fa-google-plus fa-2x"></i>
@@ -104,7 +106,7 @@
                 <table class="off-share" ng-if="!is_web_app">
                     <tr>
                         <td class="total">
-                            <a ng-click="share(item.description, item.name, item.image, '#/off/'+item.id)"
+                            <a ng-click="share(item.description+' #آفگرد '+' #'+item.city_name+' #'+item.category_name, item.name, item.image, '#/off/'+item.id)"
                                class="no-decoration">
                                 <div class="off-share-button">
                                     <i class="fa fa-share-alt fa-2x"></i>

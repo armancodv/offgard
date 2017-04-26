@@ -218,6 +218,30 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
             });
     };
     /////
+    $scope.change_password = function (username, token, password) {
+        var varname = 'changepassword';
+        var get = {
+            p: 'reset',
+            m: 'put',
+            username: username,
+            token: token
+        };
+        var post = {
+            password: password
+        };
+        $scope.set_loading(varname);
+        $http({
+            url: $scope.url(get),
+            method: 'POST',
+            data: post
+        }).then(function (response) {
+            $scope[varname] = response.data;
+        }, function (response) {
+            $scope[varname] = [];
+            $scope[varname].error = 'خطا در ارتباط';
+        });
+    };
+    /////
 
 
     /////////////////////// off
@@ -436,6 +460,10 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
     /////
     $scope.change_keyword = function (keyword) {
         window.location.replace('#/search/' + keyword);
+    };
+    /////
+    $scope.goto_page = function (page) {
+        window.location.replace('#/' + page);
     };
 
     /////////////////////// comment
@@ -670,6 +698,10 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
             $scope.off.success = undefined;
             $scope.write_local_storage('off');
         }
+        if ($scope.changepassword) {
+            $scope.changepassword.error = undefined;
+            $scope.changepassword.success = undefined;
+            }
     };
 
     /////////////////////// init

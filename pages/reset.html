@@ -6,7 +6,7 @@
         <form role="form" ng-submit="reset_login(email,captcha.captcha_id,captcha_code)" ng-if="!login.status">
             <fieldset>
                 <legend>فراموشی کلمه عبور</legend>
-                <div class="alert alert-danger" ng-if="login.error">{{login.error}}</div>
+                <div class="alert alert-danger" ng-if="reset.error">{{reset.error}}</div>
                 <div class="form-group">
                     <label>ایمیل</label>
                     <input type="email" ng-model="email" class="form-control" autocorrect="off" autocapitalize="none"
@@ -21,6 +21,7 @@
                 </div>
             </fieldset>
             <hr>
+            <div class="alert alert-success" ng-if="reset.success">{{reset.success}}</div>
             <button class="btn btn-primary btn-block">ارسال</button>
             <div ui-content-for="navbarAction">
                 <a class="btn" ng-click="reset_login(email,captcha.captcha_id,captcha_code)">ارسال</a>

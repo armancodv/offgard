@@ -19,6 +19,7 @@ app.config(function ($routeProvider) {
     $routeProvider.when('/login', {templateUrl: 'pages/login.html', reloadOnSearch: false});
     $routeProvider.when('/signup', {templateUrl: 'pages/signup.html', reloadOnSearch: false});
     $routeProvider.when('/reset', {templateUrl: 'pages/reset.html', reloadOnSearch: false});
+    $routeProvider.when('/password', {templateUrl: 'pages/password.html', reloadOnSearch: false});
     $routeProvider.when('/my-offs', {templateUrl: 'pages/my-offs.html', reloadOnSearch: false});
     $routeProvider.when('/add-off', {templateUrl: 'pages/add-off.html', reloadOnSearch: false});
     $routeProvider.when('/edit-off', {templateUrl: 'pages/edit-off.html', reloadOnSearch: false});

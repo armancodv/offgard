@@ -11,7 +11,7 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
     const SERVER = 'http://offgard.com/api/';
 //    const SERVER = 'http://localhost/offgard-server/';
     const WEBAPP = 'http://offgard.com/app/';
-    $scope.is_web_app = false;
+    $scope.is_web_app = true;
     $scope.url = function (get) {
         return SERVER + '?' + serializeData(get);
     };

@@ -1,0 +1,18 @@
+<div class="modal" ui-if="noconnection" ui-shared-state="noconnection">
+  <div class="modal-backdrop in"></div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" 
+                ui-turn-off="noconnection">&times;</button>
+        <h4 class="modal-title">خطا در ارتباط</h4>
+      </div>
+      <div class="modal-body">
+        <p>خطا در ارتباط به پایگاه داده رخ داده است. لطفا اتصال خود را به اینترنت بررسی نمایید.</p>
+      </div>
+      <div class="modal-footer">
+        <button ui-turn-off="noconnection" class="btn btn-default">بازگشت</button>
+      </div>
+    </div>
+  </div>
+</div>

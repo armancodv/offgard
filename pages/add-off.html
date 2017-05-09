@@ -4,16 +4,27 @@
 <div class="scrollable">
     <div class="scrollable-content section">
         <form ng-if="!off.success" role="form"
-              ng-submit="insert_off(login.username, login.token, category, city, name, image, address, description, 0, 0, date_from, date_to, off_min, off_max)">
+              ng-submit="insert_off(login.username, login.token, category, city, name, img, address, description, 0, 0, date_type, date_from, date_to, off_type, off_min, off_max, off_text)">
             <fieldset>
                 <legend>افزودن تخفیف</legend>
-                <div class="alert alert-danger" ng-if="!login.status"><i class="fa fa-info-circle"></i> برای ثبت تخفیف، وارد شوید.</div>
+                <div class="alert alert-danger" ng-if="!login.status"><i class="fa fa-info-circle"></i> برای ثبت تخفیف،
+                    وارد شوید.
+                </div>
+                <a class="btn btn-primary btn-block" ng-if="!login.status" href="#/login"><i class="fa fa-sign-in"></i>
+                    ورود</a>
+                <a class="btn btn-primary btn-block" ng-if="!login.status" href="#/signup"><i
+                        class="fa fa-user-plus"></i> ثبت نام</a><br>
+                <div class="alert alert-info"><i class="fa fa-info-circle"></i> پیش از تکمیل فرم، قوانین و سوالات متداول
+                    را مطالعه نمایید.
+                </div>
                 <div class="alert alert-info"><i class="fa fa-info-circle"></i> فیلدهای ستاره دار ضروری می باشد.</div>
-                <div class="alert alert-info"><i class="fa fa-info-circle"></i> لطفا برای هر محصول به صورت مجزا اقدام به ثبت ننمایید. بهتر است که برای هر فروشگاه حداکثر یک تخفیف ثبت شود.</div>
+                <div class="alert alert-info"><i class="fa fa-info-circle"></i> لطفا برای هر محصول به صورت مجزا اقدام به
+                    ثبت ننمایید. بهتر است که برای هر فروشگاه حداکثر یک تخفیف ثبت شود.
+                </div>
                 <div class="form-group">
                     <label>*نام فروشگاه</label>
                     <input type="text" ng-model="name" class="form-control" autocorrect="off" autocapitalize="none"
-                           placeholder="نام فروشگاه را وارد نمایید" dir="rtl" required>
+                           placeholder="نام فروشگاه را وارد نمایید" dir="rtl" maxlength="100" required>
                 </div>
                 <div class="form-group">
                     <label>*شهر</label>
@@ -25,59 +36,130 @@
                     <select class="form-control" ng-model="category"
                             ng-options="item.code as item.name for item in categories.result" required></select>
                 </div>
+                <hr>
                 <div class="form-group">
                     <label>توضیحات</label>
                     <textarea ng-model="description" class="form-control" autocorrect="off" autocapitalize="none"
-                              placeholder="توضیحی مختصر از تخفیف وارد نمایید"
+                              placeholder="توضیحی مختصر از تخفیف وارد نمایید" maxlength="1000"
                               dir="rtl"></textarea>
                 </div>
                 <div class="form-group">
                     <label>آدرس</label>
                     <textarea ng-model="address" class="form-control" placeholder="آدرس فروشگاه را وارد نمایید"
-                              dir="rtl" autocorrect="off" autocapitalize="none"></textarea>
+                              dir="rtl" autocorrect="off" autocapitalize="none" maxlength="100"></textarea>
                 </div>
+                <hr>
                 <div class="form-group">
-                    <label>*شروع تخفیف از (%)</label>
-                    <input type="number" min="0" max="99" step="1" ng-model="off_min" class="form-control"
-                           placeholder="از چند درصد تخفیف" dir="rtl" required>
+                    <label>*نوع تخفیف</label>
+                    <ul class="nav nav-tabs" ng-init="off_type=1">
+                        <li ng-if="off_type==1" class="active" ng-click="$parent.off_type=1"><a>تخفیف درصدی</a></li>
+                        <li ng-if="off_type!=1" ng-click="$parent.off_type=1"><a>تخفیف درصدی</a></li>
+                        <li ng-if="off_type==2" class="active" ng-click="$parent.off_type=2"><a>اجناس به قیمت</a></li>
+                        <li ng-if="off_type!=2" ng-click="$parent.off_type=2"><a>اجناس به قیمت</a></li>
+                    </ul>
                 </div>
-                <div class="form-group">
-                    <label>*تخفیف تا (%)</label>
-                    <input type="number" min="1" max="99" step="1" ng-model="off_max" class="form-control"
-                           placeholder="تا چند درصد تخفیف" dir="rtl" required>
+
+                <div ng-if="off_type == 1">
+                    <div class="alert alert-info"><i class="fa fa-info-circle"></i> نمونه:
+                        <br>از "10" تا "20" => 10 تا 20 درصد تخفیف
+                        <br>از "0" تا "20" => تا 20 درصد تخفیف
+                        <br>از "20" تا "20" => 20 درصد تخفیف
+                    </div>
+                    <div class="form-group">
+                        <label>*شروع تخفیف از (%)</label>
+                        <input type="number" min="0" max="99" step="1" ng-model="$parent.off_min" class="form-control"
+                               placeholder="از چند درصد تخفیف" dir="rtl">
+                    </div>
+                    <div class="form-group">
+                        <label>*تخفیف تا (%)</label>
+                        <input type="number" min="1" max="99" step="1" ng-model="$parent.off_max" class="form-control"
+                               placeholder="تا چند درصد تخفیف" dir="rtl">
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>*از تاریخ</label>
-                    <persian-datepicker ng-model="date_from" min-date="date_min" max-date="date_max" show-weeks="false"
-                                        class="well well-sm" starting-day="6" format-day="d" required=""></persian-datepicker>
+                <div ng-if="off_type == 2">
+                    <div class="alert alert-info"><i class="fa fa-info-circle"></i> نمونه:
+                        <br>"اجناس به قیمت خرید" => اجناس به قیمت خرید
+                        <br>"اجناس به قیمت 38 تومان" => اجناس به قیمت 38 تومان
+                    </div>
+                    <div class="form-group">
+                        <label>*متن تخفیف</label>
+                        <input type="text" ng-model="$parent.off_text" class="form-control" autocorrect="off"
+                               autocapitalize="none" maxlength="100"
+                               placeholder="اجناس به قیمت" dir="rtl">
+                    </div>
                 </div>
+                <hr>
                 <div class="form-group">
-                    <label>*تا تاریخ</label>
-                    <persian-datepicker ng-model="date_to" min-date="date_min" max-date="date_max" show-weeks="false"
-                                        class="well well-sm" starting-day="6" format-day="d" required=""></persian-datepicker>
+                    <label>*تاریخ</label>
+                    <ul class="nav nav-tabs" ng-init="date_type=1">
+                        <li ng-if="date_type==1" class="active" ng-click="$parent.date_type=1"><a>با بازه زمانی</a></li>
+                        <li ng-if="date_type!=1" ng-click="$parent.date_type=1"><a>با بازه زمانی</a></li>
+                        <li ng-if="date_type==2" class="active" ng-click="$parent.date_type=2"><a>بدون بازه زمانی</a></li>
+                        <li ng-if="date_type!=2" ng-click="$parent.date_type=2"><a>بدون بازه زمانی</a></li>
+                    </ul>
                 </div>
+
+                <div ng-if="date_type == 1">
+                    <div class="form-group">
+                        <label>*از تاریخ</label>
+                        <div class="alert alert-info"><i class="fa fa-info-circle"></i> تاریخ، قابل تغییر و تمدید می
+                            باشد.
+                        </div>
+                        <persian-datepicker ng-model="$parent.date_from" min-date="date_min" max-date="date_max"
+                                            show-weeks="false"
+                                            class="well well-sm" starting-day="6" format-day="d"
+                                            required=""></persian-datepicker>
+                    </div>
+                    <div class="form-group">
+                        <label>*تا تاریخ</label>
+                        <persian-datepicker ng-model="$parent.date_to" min-date="date_min" max-date="date_max"
+                                            show-weeks="false"
+                                            class="well well-sm" starting-day="6" format-day="d"
+                                            required=""></persian-datepicker>
+                    </div>
+                </div>
+                <div ng-if="date_type == 2">
+                    <div class="alert alert-info"><i class="fa fa-info-circle"></i>
+                        آگهی شما به مدت 2 هفته نمایش داده خواهد شد. پس از آن می توانید از قسمت تخفیفات من آن را تمدید
+                        نمایید.
+                    </div>
+                </div>
+                <hr>
                 <div class="form-group">
-                    <label>عکس</label>
-                    <div class="alert alert-info"><i class="fa fa-info-circle"></i> بهتر است نسبت طول به عرض عکس ارسالی 4 به 3 باشد.</div>
-                    <input type="file" file-model="image"/>
+                    <label>عکس فروشگاه</label>
+                    <div class="alert alert-info"><i class="fa fa-info-circle"></i> بهتر است نسبت طول به عرض عکس ارسالی
+                        4 به 3 باشد.
+                    </div>
+                    <input type="file" file-model="img"/>
                 </div>
             </fieldset>
             <hr>
-            <div class="alert alert-info" ng-if="off.loading"><i class="fa fa-circle-o-notch fa-spin"></i> لطفا صبر کنید.</div>
-            <div class="alert alert-info" ng-if="image.loading"><i class="fa fa-circle-o-notch fa-spin"></i> در حال بارگذاری عکس.</div>
+            <div class="alert alert-info" ng-if="off.loading"><i class="fa fa-circle-o-notch fa-spin"></i> لطفا صبر
+                کنید.
+            </div>
+            <div class="alert alert-info" ng-if="image.loading"><i class="fa fa-circle-o-notch fa-spin"></i> در حال
+                بارگذاری عکس.
+            </div>
             <div class="alert alert-danger" ng-if="off.error">{{off.error}}</div>
             <div class="alert alert-danger" ng-if="image.error">{{image.error}}</div>
             <button class="btn btn-primary btn-block">ثبت</button>
             <div ui-content-for="navbarAction">
                 <a class="btn"
-                   ng-click="insert_off(login.username, login.token, category, city, name, image, address, description, 0, 0, date_from, date_to, off_min, off_max)">ثبت</a>
+                   ng-click="insert_off(login.username, login.token, category, city, name, img, address, description, 0, 0, date_type, date_from, date_to, off_type, off_min, off_max, off_text)">ثبت</a>
             </div>
         </form>
         <div ng-if="off.success">
-            <div class="alert alert-info" ng-if="image.loading"><i class="fa fa-circle-o-notch fa-spin"></i> در حال بارگذاری عکس.</div>
+            <div class="alert alert-danger" ng-if="off.error">{{off.error}}</div>
+            <div class="alert alert-danger" ng-if="image.error">{{image.error}}</div>
+            <div class="alert alert-info" ng-if="image.loading"><i class="fa fa-circle-o-notch fa-spin"></i> در حال
+                بارگذاری عکس.
+            </div>
             <div class="alert alert-success" ng-if="off.success">{{off.success}}</div>
-            <div class="alert alert-info"><i class="fa fa-info-circle"></i>با تشکر از شما. آگهی پس از بررسی در لیست تخفیفات نمایش داده خواهد شد.</div>
-            <a class="btn btn-primary" href="#/my-offs" ng-click="delete_message()"><i class="fa fa-list-ul"></i> تخفیفات من</a>
+            <div class="alert alert-info"><i class="fa fa-info-circle"></i>با تشکر از شما. آگهی پس از بررسی در لیست
+                تخفیفات نمایش داده خواهد شد.
+            </div>
+            <a class="btn btn-primary" href="#/my-offs" ng-click="delete_message()"><i class="fa fa-list-ul"></i>
+                تخفیفات من</a>
         </div>
     </div>
 </div>

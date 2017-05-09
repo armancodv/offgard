@@ -92,7 +92,10 @@ pre {
 }
 
 .off-full {
-    height: 660px;
+}
+
+.off-full td {
+    padding: 10px;
 }
 
 .off-top {
@@ -126,7 +129,6 @@ pre {
 }
 
 .off-full .off-bottom {
-    height: 310px;
 }
 
 .off-bottom tr {
@@ -278,6 +280,7 @@ pre {
 }
 
 .b1, .c1, .b2, .c2 {
+    clear: both;
     background-color: #f0f0f0;
     width: 100%;
     text-align: center;

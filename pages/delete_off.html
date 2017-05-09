@@ -1,0 +1,19 @@
+<div class="modal" ui-if="deleteoff" ui-shared-state="deleteoff">
+  <div class="modal-backdrop in"></div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" 
+                ui-turn-off="deleteoff">&times;</button>
+        <h4 class="modal-title">حذف تخفیف</h4>
+      </div>
+      <div class="modal-body">
+        <p>برای حذف تخفیف بر روی حذف کلیک نمایید.</p>
+      </div>
+      <div class="modal-footer">
+        <button ui-turn-off="deleteoff" ng-click="delete_off(login.username, login.token, select_off_delete_item)" class="btn btn-primary"><i class="fa fa-trash"></i> حذف تخفیف</button>
+        <button ui-turn-off="deleteoff" class="btn btn-default">بازگشت</button>
+      </div>
+    </div>
+  </div>
+</div>

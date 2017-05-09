@@ -1,0 +1,19 @@
+<div class="modal" ui-if="deleteimage" ui-shared-state="deleteimage">
+  <div class="modal-backdrop in"></div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" 
+                ui-turn-off="deleteimage">&times;</button>
+        <h4 class="modal-title">حذف عکس</h4>
+      </div>
+      <div class="modal-body">
+        <p>برای حذف عکس بر روی حذف کلیک نمایید.</p>
+      </div>
+      <div class="modal-footer">
+        <button ui-turn-off="deleteimage" ng-click="delete_image(login.username, login.token, select_image_delete_item)" class="btn btn-primary"><i class="fa fa-trash"></i> حذف عکس</button>
+        <button ui-turn-off="deleteimage" class="btn btn-default">بازگشت</button>
+      </div>
+    </div>
+  </div>
+</div>

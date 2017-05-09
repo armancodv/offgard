@@ -27,7 +27,7 @@
                     <tr>
                         <td class="off-bottom-half off-bottom-right">
                     <span class="off-red">
-                    {{item.off_text}}
+                                {{item.off_text | limitTo: 20}}{{item.off_text.length > 20 ? '...' : ''}}
                     </span>
                         </td>
                         <td class="off-bottom-half off-bottom-left">
@@ -46,18 +46,21 @@
                     </tr>
                     <tr>
                         <td class="off-bottom-half off-bottom-right">
-                            <span class="off-item-title">از:</span>
-                    <span class="off-date">
+                            <span class="off-item-title" ng-if="item.date_type==1">از:</span>
+                    <span class="off-date" ng-if="item.date_type==1">
                         <i class="fa fa-calendar"></i>
                         {{item.date_from | persianDate:'d MMMM' }}
                     </span>
                         </td>
                         <td class="off-bottom-half off-bottom-left">
-                            <span class="off-item-title">تا:</span>
-                    <span class="off-date">
+                            <span class="off-item-title" ng-if="item.date_type==1">تا:</span>
+                    <span class="off-date" ng-if="item.date_type==1">
                         <i class="fa fa-calendar"></i>
                         {{item.date_to | persianDate:'d MMMM' }}
                     </span>
+                            <span class="off-date" ng-if="item.date_type==2">
+                                به مدت محدود
+                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -165,10 +168,15 @@
   }
 }
 
+
             </script>
         </div>
         <div class="c2">
             <img ng-repeat="item in advertisements.result.c2" src="{{item.path}}" ng-click="open_link(item.link)">
         </div>
     </div>
+</div>
+
+<div ui-content-for="modals">
+    <div ng-include="'pages/noconnection.html'"></div>
 </div>

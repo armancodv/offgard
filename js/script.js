@@ -26,6 +26,7 @@ app.config(function ($routeProvider) {
     $routeProvider.when('/cities', {templateUrl: 'pages/cities.html', reloadOnSearch: false});
     $routeProvider.when('/categories', {templateUrl: 'pages/categories.html', reloadOnSearch: false});
     $routeProvider.when('/rule', {templateUrl: 'pages/rule.html', reloadOnSearch: false});
+    $routeProvider.when('/faq', {templateUrl: 'pages/faq.html', reloadOnSearch: false});
     $routeProvider.when('/about', {templateUrl: 'pages/about.html', reloadOnSearch: false});
     $routeProvider.when('/contact', {templateUrl: 'pages/contact.html', reloadOnSearch: false});
 });

@@ -9,7 +9,7 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
 
     /////////////////////// routes
     const SERVER = 'http://offgard.com/api/';
-//    const SERVER = 'http://localhost/offgard-server/';
+    // const SERVER = 'http://localhost/offgard-server/';
     const WEBAPP = 'http://offgard.com/app/';
     $scope.is_web_app = false;
     $scope.url = function (get) {
@@ -326,7 +326,7 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
         });
     };
     /////
-    $scope.insert_off = function (username, token, category_code, city_code, name, image, address, description, latitude, longitude, date_from, date_to, off_min, off_max) {
+    $scope.insert_off = function (username, token, category_code, city_code, name, image, address, description, latitude, longitude, date_type, date_from, date_to, off_type, off_min, off_max, off_text) {
         var varname = 'off';
         var get = {
             p: 'off',
@@ -342,10 +342,13 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
             description: description,
             latitude: latitude,
             longitude: longitude,
+            date_type: date_type,
             date_from: getFormattedDate(date_from),
             date_to: getFormattedDate(date_to),
+            off_type: off_type,
             off_min: off_min,
-            off_max: off_max
+            off_max: off_max,
+            off_text: off_text
         };
         $scope.set_loading(varname);
         $http({
@@ -364,7 +367,7 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
         });
     };
     /////
-    $scope.edit_off = function (username, token, id, category_code, city_code, name, image, address, description, latitude, longitude, date_from, date_to, off_min, off_max) {
+    $scope.edit_off = function (username, token, id, category_code, city_code, name, image, address, description, latitude, longitude, date_type, date_from, date_to, off_type, off_min, off_max, off_text) {
         var varname = 'off';
         var get = {
             p: 'off',
@@ -381,11 +384,15 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
             description: description,
             latitude: latitude,
             longitude: longitude,
-            date_from: getFormattedDate(date_from),
-            date_to: getFormattedDate(date_to),
+            date_type: date_type,
+            date_from: getFormattedDate(new Date(date_from)),
+            date_to: getFormattedDate(new Date(date_to)),
+            off_type: off_type,
             off_min: off_min,
-            off_max: off_max
+            off_max: off_max,
+            off_text: off_text
         };
+        console.log(post);
         $scope.set_loading(varname);
         $http({
             url: $scope.url(get),
@@ -420,6 +427,7 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
             data: post
         }).then(function (response) {
             $scope[varname] = response.data;
+            $scope.show_myoffs($scope.login.username, $scope.login.token);
         }, function (response) {
             $scope[varname] = [];
             $scope[varname].error = 'خطا در ارتباط';
@@ -587,6 +595,7 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
             data: post
         }).then(function (response) {
             $scope[varname] = response.data;
+            $scope.show_myoffs($scope.login.username, $scope.login.token);
         }, function (response) {
             $scope[varname] = [];
             $scope[varname].error = 'خطا در ارتباط';
@@ -701,7 +710,7 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
         if ($scope.changepassword) {
             $scope.changepassword.error = undefined;
             $scope.changepassword.success = undefined;
-            }
+        }
     };
 
     /////////////////////// init
@@ -725,6 +734,14 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
         $scope.show_myoffs($scope.login.username, $scope.login.token);
     }
     $scope.delete_message();
+
+    $scope.select_off_delete = function (id) {
+        $scope.select_off_delete_item = id;
+    };
+
+    $scope.select_image_delete = function (id) {
+        $scope.select_image_delete_item = id;
+    };
 });
 
 function serializeData(data) {

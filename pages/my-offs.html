@@ -1,37 +1,39 @@
 <div ui-content-for="title" ng-init="show_myoffs(login.username, login.token)">
     <span>تخفیفات من</span>
     <div class="pull-left" ng-if="myoffs.loading"><i class="fa fa-refresh fa-spin"></i></div>
-    <div class="pull-left" ng-click="show_myoffs(login.username, login.token)" ng-if="!myoffs.loading"><i class="fa fa-refresh"></i></div>
+    <div class="pull-left" ng-click="show_myoffs(login.username, login.token)" ng-if="!myoffs.loading"><i
+            class="fa fa-refresh"></i></div>
 </div>
 <div class="scrollable">
     <div class="scrollable-content section">
         <legend>تخفیفات من</legend>
-        <div class="alert alert-info"><i class="fa fa-info-circle"></i> تخفیفات دارای وضعیت 'منتشر شده' در لیست تخفیفات اپلیکیشن نمایش داده می شود.</div>
-        <div style="overflow-x:auto;">
-            <table class="table">
-                <tr>
-                    <th>نام فروشگاه</th>
-                    <th>وضعیت</th>
-                    <th>ویرایش</th>
-                    <th>حذف</th>
-                    <th>حذف عکس</th>
-                    <th>از تاریخ</th>
-                    <th>تا تاریخ</th>
-                    <th>تخفیف از</th>
-                    <th>تخفیف تا</th>
-                </tr>
-                <tr ng-repeat="item in myoffs.result">
-                    <td>{{item.name}}</td>
-                    <td>{{item.status}}</td>
-                    <td><a class="btn btn-primary" ng-click="selecttoeditoff(item)" href="#edit-off"><i class="fa fa-edit"></i></a></td>
-                    <td><a class="btn btn-primary" ng-click="delete_off(login.username, login.token, item.id)"><i class="fa fa-trash"></i></a></td>
-                    <td><a class="btn btn-primary" ng-click="delete_image(login.username, login.token, item.id)"><i class="fa fa-trash"></i></a></td>
-                    <td>{{item.date_from | persianDate:'yyyy-MM-dd'}}</td>
-                    <td>{{item.date_to | persianDate:'yyyy-MM-dd'}}</td>
-                    <td>{{item.off_min}}</td>
-                    <td>{{item.off_max}}</td>
-                </tr>
-            </table>
+        <div class="alert alert-info"><i class="fa fa-info-circle"></i> تخفیفات دارای وضعیت 'منتشر شده' در لیست تخفیفات
+            اپلیکیشن نمایش داده می شود.
+        </div>
+        <div class="panel panel-default" ng-repeat="item in myoffs.result">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{item.name}} ({{item.status}})</h3>
+            </div>
+            <div class="panel-body">
+                <div>
+                    نمایش از تاریخ {{item.date_from | persianDate:'d MMMM'}}
+                    تا {{item.date_to | persianDate:'d MMMM'}}
+                    ({{item.status}})
+                </div>
+                <br>
+
+                <a class="btn btn-default" ng-click="selecttoeditoff(item)" href="#edit-off"><i class="fa fa-edit"></i>
+                    ویرایش و تمدید</a>
+                <a class="btn btn-primary" ng-click="select_off_delete(item.id)" ui-turn-on="deleteoff">
+                    <i class="fa fa-trash"></i> حذف تخفیف</a>
+                <a class="btn btn-primary" ng-if="item.image" ng-click="select_image_delete(item.id)" ui-turn-on="deleteimage">
+                    <i class="fa fa-trash"></i> حذف عکس</a>
+            </div>
         </div>
     </div>
+</div>
+
+<div ui-content-for="modals">
+    <div ng-include="'pages/delete_off.html'"></div>
+    <div ng-include="'pages/delete_image.html'"></div>
 </div>

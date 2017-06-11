@@ -1,13 +1,9 @@
-<div ui-content-for="title" ng-init="get_keyword()">
-    <span>جستجو</span>
+<div ui-content-for="title" ng-init="show_offs()">
+    <span>آفگرد</span>
+    <div class="refresh" ng-if="offs.loading"><i class="fa fa-refresh fa-spin"></i></div>
+    <div class="refresh" ng-click="show_offs()" ng-if="!offs.loading"><i class="fa fa-refresh"></i></div>
 </div>
-<div class="scrollable" ui-shared-state="searchBar">
-    <input
-            ng-model="keyword" ng-model-options="{debounce: 2000}"
-            ng-change="change_keyword(keyword)"
-            type="search"
-            class="form-control scrollable-header"
-            placeholder="جستجو" autofocus/>
+<div class="scrollable">
     <div class="scrollable-content">
         <div class="col-sm-12 page-button margin-bottom" ng-if="offs.page.show_previous_page"
              ng-click="previous_page()"><i class="fa fa-arrow-up"></i> صفحه قبل
@@ -24,7 +20,6 @@
                         <i class="fa fa-map-marker"></i>
                         {{item.city_name}}
                         </span>
-
                     </div>
                 </a>
                 <table class="off-bottom">
@@ -126,43 +121,6 @@
                 </table>
 
             </div>
-            <script type='application/ld+json'>
-{
-  "@context": "http://www.schema.org",
-  "@type": "Event",
-  "name": "{{item.name}}",
-  "url": "http://offgard.com/#/off/{{item.id}}",
-  "description": "{{item.description}}",
-  "startDate": "{{item.date_from}}",
-  "endDate": "{{item.date_to}}",
-  "location": {
-    "@type": "Place",
-    "name": "آفگرد",
-    "sameAs": "http://offgard.com",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "{{item.address}}",
-      "addressLocality": "{{item.city_name}}",
-      "addressCountry": "ایران"
-    }
-  },
-  "offers": {
-    "@type": "Offer",
-    "description": "{{item.off_text}}"
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-            </script>
         </div>
         <div class="col-sm-6 col-lg-4" ng-if="!offs.page.show_next_page">
             <a class="no-decoration" href="#/add-off">

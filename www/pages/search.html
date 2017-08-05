@@ -57,20 +57,23 @@
                     </tr>
                     <tr>
                         <td class="off-bottom-half off-bottom-right">
-                            <span class="off-item-title" ng-if="item.date_type==1">از:</span>
-                            <span class="off-date" ng-if="item.date_type==1">
-                                <i class="fa fa-calendar"></i>
-                                {{item.date_from | persianDate:'d MMMM' }}
-                            </span>
+                            <span class="off-item-title" ng-if="item.date_type==1&&item.status==1">از:</span>
+                            <span class="off-date" ng-if="item.date_type==1&&item.status==1">
+                        <i class="fa fa-calendar"></i>
+                        {{item.date_from | persianDate:'d MMMM' }}
+                    </span>
                         </td>
                         <td class="off-bottom-half off-bottom-left">
-                            <span class="off-item-title" ng-if="item.date_type==1">تا:</span>
-                            <span class="off-date" ng-if="item.date_type==1">
-                                <i class="fa fa-calendar"></i>
-                                {{item.date_to | persianDate:'d MMMM' }}
-                            </span>
-                            <span class="off-date" ng-if="item.date_type==2">
+                            <span class="off-item-title" ng-if="item.date_type==1&&item.status==1">تا:</span>
+                            <span class="off-date" ng-if="item.date_type==1&&item.status==1">
+                        <i class="fa fa-calendar"></i>
+                        {{item.date_to | persianDate:'d MMMM' }}
+                    </span>
+                            <span class="off-date" ng-if="item.date_type==2&&item.status==1">
                                 به مدت محدود
+                            </span>
+                            <span class="off-date" ng-if="item.status==4">
+                                منقضی
                             </span>
                         </td>
                     </tr>

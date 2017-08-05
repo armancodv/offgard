@@ -1,6 +1,8 @@
 @font-face {
-    font-family: 'Iranian Sans';
-    src: local('Iranian Sans'), url(../fonts/iranian-sans.eot) format('embedded-opentype'), url(../fonts/iranian-sans.woff2) format('woff2'), url(../fonts/iranian-sans.woff) format('woff'), url(../fonts/iranian-sans.ttf) format('truetype');
+    font-family: 'sahel';
+    src: url('../fonts/sahel.eot') format('eot'),
+    url('../fonts/sahel.woff') format('woff'),
+    url('../fonts/sahel.ttf') format('truetype');
 }
 
 h1 {

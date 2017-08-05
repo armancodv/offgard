@@ -272,13 +272,13 @@ html {
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    font-family: 'Iranian Sans', sans-serif;
+    font-family: 'sahel', sans-serif;
     font-size: 10px
 }
 
 body {
     margin: 0;
-    font-family: 'Iranian Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'sahel', "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 12px;
     line-height: 1.42857143;
     color: #444;
@@ -372,7 +372,7 @@ pre {
 }
 
 code, kbd, pre, samp {
-    font-family: 'Iranian Sans', Menlo, Monaco, Consolas, "Courier New", monospace
+    font-family: 'sahel', Menlo, Monaco, Consolas, "Courier New", monospace
 }
 
 samp {
@@ -533,7 +533,7 @@ a:focus {
 }
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-    font-family: 'Iranian Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'sahel', "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
     line-height: 1.1;
     color: inherit
@@ -3972,7 +3972,7 @@ button.close {
     position: absolute;
     z-index: 1070;
     display: block;
-    font-family: 'Iranian Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'sahel', "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     letter-spacing: normal;
@@ -4105,7 +4105,7 @@ button.close {
     display: none;
     max-width: 276px;
     padding: 1px;
-    font-family: 'Iranian Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'sahel', "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     letter-spacing: normal;
@@ -4353,7 +4353,7 @@ button.close {
     width: 20px;
     height: 20px;
     line-height: 1;
-    font-family: 'Iranian Sans', serif
+    font-family: 'sahel', serif
 }
 
 .carousel-control .icon-prev:before {

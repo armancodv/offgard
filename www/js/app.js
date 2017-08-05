@@ -75,7 +75,7 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
     $scope.insert_user = function (username, password, firstname, lastname, email, phone, captcha_id, captcha_code) {
         var varname = 'login';
         var get = {
-            p: 'user',
+            p: 'u',
             m: 'post'
         };
         var post = {
@@ -112,8 +112,8 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
     $scope.edit_user = function (username, token, password, firstname, lastname) {
         var varname = 'edituser';
         var get = {
-            p: 'user',
-            m: 'post',
+            p: 'u',
+            m: 'put',
             username: username,
             token: token
         };
@@ -138,7 +138,7 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
     $scope.insert_login = function (username, password, captcha_id, captcha_code) {
         var varname = 'login';
         var get = {
-            p: 'login',
+            p: 'l',
             m: 'post'
         };
         var post = {
@@ -196,7 +196,7 @@ app.controller('controller', function ($rootScope, $scope, $http, $routeParams) 
     $scope.insert_logout = function (username, token) {
         var varname = 'logout';
         var get = {
-            p: 'login',
+            p: 'l',
             m: 'delete',
             username: username,
             token: token
